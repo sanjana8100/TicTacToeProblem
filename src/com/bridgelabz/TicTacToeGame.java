@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TicTacToeGame {
     public static char[] board= new char[10];
-    public static char choice,compLetter;
+    public static char choice,compLetter,lastPlayer;
 
     public static void getBoard() {
         Arrays.fill(board, ' ');
@@ -58,6 +58,22 @@ public class TicTacToeGame {
         }
     }
 
+    public static boolean Toss(){
+        Scanner in = new Scanner(System.in);
+        System.out.println(" Tossing a coin to determine who plays first...");
+        System.out.println("Please make a choice:\n1.Heads\t2.Tails");
+        int userChoice= in.nextInt();
+        double toss= Math.random();
+        if((toss<0.5 && userChoice==1)||(toss>=0.5 && userChoice==2)) {
+            System.out.println("You won the toss and the game begins with your move!");
+            return true;
+        }
+        else {
+            System.out.println("Computer won the toss and the game begins with Computer's move!");
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("     Welcome to TIC TAC TOE Game");
         System.out.println("****************************************");
@@ -71,11 +87,24 @@ public class TicTacToeGame {
             System.out.println("The TIC TAC TOE Board is Created!");
             showBoard();
             chooseLetter();
+            boolean win= Toss();
             System.out.println("The Current state of the board is:");
             showBoard();
+            if(win)
+                lastPlayer=compLetter;
+            else
+                lastPlayer=choice;
             for(int i=1;i<board.length;i++)
-                while(board[1]==' '||board[2]==' '||board[3]==' '||board[4]==' '||board[5]==' '||board[6]==' '||board[7]==' '||board[8]==' '||board[9]==' ')
-                    makeMove(choice);
+                while(board[1]==' '||board[2]==' '||board[3]==' '||board[4]==' '||board[5]==' '||board[6]==' '||board[7]==' '||board[8]==' '||board[9]==' '){
+                        if(lastPlayer==choice){
+                            makeMove(compLetter);
+                            lastPlayer=compLetter;
+                        }
+                        else{
+                            makeMove(choice);
+                            lastPlayer=choice;
+                        }
+                }
         }
     }
 }
