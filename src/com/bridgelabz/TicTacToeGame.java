@@ -43,6 +43,21 @@ public class TicTacToeGame {
         }
     }
 
+    public static void makeMove(char Letter){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the position you want to place your letter:");
+        int position= in.nextInt();
+        if((position>=1 && position<=9) && board[position]==' ') {
+            board[position] = Letter;
+            System.out.println("The Current state of the board is:");
+            showBoard();
+        }
+        else {
+            System.out.println("Enter a valid position!!!");
+            makeMove(Letter);
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("     Welcome to TIC TAC TOE Game");
         System.out.println("****************************************");
@@ -58,6 +73,7 @@ public class TicTacToeGame {
             chooseLetter();
             System.out.println("The Current state of the board is:");
             showBoard();
+            makeMove(choice);
         }
     }
 }
