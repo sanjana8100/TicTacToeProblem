@@ -10,7 +10,7 @@ public class TicTacToeGame {
         Arrays.fill(board, ' ');
     }
 
-    public static void displayBoard() {
+    public static void showBoard() {
         System.out.println("---------------");
         for(int i=1;i<board.length;i++) {
             if (i == 4 || i == 7) {
@@ -54,7 +54,7 @@ public class TicTacToeGame {
         if(input ==1){
             getBoard();
             System.out.println("The TIC TAC TOE Board is Created!");
-            displayBoard();
+            showBoard();
             chooseLetter();
         }
     }
