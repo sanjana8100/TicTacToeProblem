@@ -56,6 +56,8 @@ public class TicTacToeGame {
             System.out.println("The TIC TAC TOE Board is Created!");
             showBoard();
             chooseLetter();
+            System.out.println("The Current state of the board is:");
+            showBoard();
         }
     }
 }
