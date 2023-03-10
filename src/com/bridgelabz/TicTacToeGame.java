@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TicTacToeGame {
     public static char[] board= new char[10];
+    public static char choice,compLetter;
 
     public static void getBoard() {
         Arrays.fill(board, ' ');
@@ -22,6 +23,26 @@ public class TicTacToeGame {
         System.out.println("---------------");
     }
 
+    public static void chooseLetter(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Choose a Letter to Continue the game: 'X' or 'O'");
+        choice= in.next().charAt(0);
+        System.out.println("_________________________________________");
+        System.out.println("Your Letter: "+choice);
+        if(choice=='X') {
+            compLetter = 'O';
+            System.out.println("Computer Letter: "+compLetter);
+        }
+        else if(choice=='O') {
+            compLetter = 'X';
+            System.out.println("Computer Letter: "+compLetter);
+        }
+        else {
+            System.out.println("Enter a valid Letter!!!");
+            chooseLetter();
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("     Welcome to TIC TAC TOE Game");
         System.out.println("****************************************");
@@ -29,10 +50,12 @@ public class TicTacToeGame {
         Scanner in = new Scanner(System.in);
 
         System.out.println("To Start: PRESS 1");
-        int choice = in.nextInt();
-        if(choice ==1){
+        int input = in.nextInt();
+        if(input ==1){
             getBoard();
+            System.out.println("The TIC TAC TOE Board is Created!");
             displayBoard();
+            chooseLetter();
         }
     }
 }
