@@ -73,7 +73,9 @@ public class TicTacToeGame {
             chooseLetter();
             System.out.println("The Current state of the board is:");
             showBoard();
-            makeMove(choice);
+            for(int i=1;i<board.length;i++)
+                while(board[1]==' '||board[2]==' '||board[3]==' '||board[4]==' '||board[5]==' '||board[6]==' '||board[7]==' '||board[8]==' '||board[9]==' ')
+                    makeMove(choice);
         }
     }
 }
